@@ -1,3 +1,4 @@
+include('Error_Handling.php');
 <?php
 include 'src/db.mysql';
 
