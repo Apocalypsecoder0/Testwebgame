@@ -1,0 +1,2 @@
+# Run resource regeneration every hour
+0 * * * * /usr/bin/php /path/to/your/script/regenerate_resources.php
