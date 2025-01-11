@@ -34,8 +34,8 @@ Installation
 
 Clone the repository:
 
-git clone https://github.com/Apocalypsecoder0/game-mmorpg.git](https://github.com/Apocalypsecoder0/Test-mmorpg-Apocalyptic-Online
-cd tgame-mmorpg
+git clone https://github.com/Apocalypsecoder0/[game-mmorpg.git](https://github.com/Apocalypsecoder0/Test-mmorpg-Apocalyptic-Online
+cd tgame-mmorpg](https://github.com/Apocalypsecoder0/Testwebgame/edit/main/README.md)
 Set up the database:
 
 Create a new MySQL database:
