@@ -5,3 +5,7 @@ CREATE TABLE messages (
     message TEXT NOT NULL,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+function createParty($leaderId) {
+    // Code to create a new party
+    // Insert party details into the database
+}
