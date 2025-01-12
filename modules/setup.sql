@@ -192,3 +192,28 @@ CREATE TABLE progress (
 
 -- Example insert statement
 INSERT INTO progress (user_id, done, total) VALUES (1, 50, 200);
+SELECT 
+    u.id AS uid,
+    u.name,
+    r.rank,
+    r.army,
+    u.race,
+    u.cash,
+    r.allyid
+FROM 
+    users u
+JOIN 
+    rankings r ON u.id = r.userid
+WHERE 
+    r.rank != 0
+ORDER BY 
+    r.rank
+LIMIT 
+    :offset, :limit;  -- Use pagination parameters for offset and limit
+Get Ally Information:
+SELECT 
+    allyname 
+FROM 
+    allies 
+WHERE 
+    id = :allyid;
