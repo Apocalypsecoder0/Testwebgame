@@ -86,3 +86,28 @@ CREATE TABLE users (
     inBank DECIMAL(10, 2) DEFAULT 0,
     capacity DECIMAL(10, 2) DEFAULT 1000
 );
+-- Create database
+CREATE DATABASE IF NOT EXISTS game_db;
+
+USE game_db;
+
+-- Create users table
+CREATE TABLE IF NOT EXISTS users (
+    uid INT AUTO_INCREMENT PRIMARY KEY,
+    uname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create alliances table
+CREATE TABLE IF NOT EXISTS alliances (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    subject VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    url VARCHAR(255),
+    allow_new_members TINYINT(1) DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(uid) ON DELETE CASCADE
+);
