@@ -146,3 +146,32 @@ CREATE TABLE military_effectiveness (
     mil_rank INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) -- Assuming there's a users table
 );
+CREATE TABLE personnel (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    attackName VARCHAR(255),
+    attackCount INT DEFAULT 0,
+    superAttackName VARCHAR(255),
+    superAttackCount INT DEFAULT 0,
+    attackMercName VARCHAR(255),
+    attackMercCount INT DEFAULT 0,
+    defenseName VARCHAR(255),
+    defenseCount INT DEFAULT 0,
+    superDefenseName VARCHAR(255),
+    superDefenseCount INT DEFAULT 0,
+    defenseMercName VARCHAR(255),
+    defenseMercCount INT DEFAULT 0,
+    uuCount INT DEFAULT 0,
+    minerCount INT DEFAULT 0,
+    liferCount INT DEFAULT 0,
+    covertName VARCHAR(255),
+    covertCount INT DEFAULT 0,
+    superCovertName VARCHAR(255),
+    superCovertCount INT DEFAULT 0,
+    anticovertName VARCHAR(255),
+    anticovertCount INT DEFAULT 0,
+    superAnticovertName VARCHAR(255),
+    superAnticovertCount INT DEFAULT 0,
+    ttlarmysize INT DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users(id) -- Assuming there's a users table
+);
