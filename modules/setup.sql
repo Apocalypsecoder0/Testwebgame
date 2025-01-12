@@ -131,3 +131,18 @@ SELECT * FROM messages WHERE toUID = ?;  -- Assuming you want messages for the c
 
 -- Count the number of queries executed (not directly in SQL)
 -- This would typically be handled in application logic, not SQL.
+CREATE TABLE military_effectiveness (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    mil_atk INT NOT NULL,
+    mil_atk_rank INT NOT NULL,
+    mil_def INT NOT NULL,
+    mil_def_rank INT NOT NULL,
+    mil_cov INT NOT NULL,
+    mil_cov_rank INT NOT NULL,
+    mil_anti INT NOT NULL,
+    mil_anti_rank INT NOT NULL,
+    mil_total INT NOT NULL,
+    mil_rank INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) -- Assuming there's a users table
+);
