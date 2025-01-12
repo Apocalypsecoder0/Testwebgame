@@ -12,3 +12,10 @@ CREATE TABLE training_costs (
     anticovertCost DECIMAL(10, 2),
     superAnticovertCost DECIMAL(10, 2)
 );
+CREATE TABLE game_actions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    action_type ENUM('attack', 'raid', 'spy') NOT NULL,
+    target_id INT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+);
