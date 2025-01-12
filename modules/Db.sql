@@ -1,3 +1,4 @@
+
 CREATE TABLE users (
     userid INT PRIMARY KEY,
     balance DECIMAL(10, 2) NOT NULL
@@ -77,3 +78,11 @@ WHERE `uid` = {$_SESSION['userid']} AND `wid` = $wid AND `quanity` = '0' LIMIT 1
 Buy Weapons
 INSERT INTO `weapons` (uid, strength, quanity) 
 VALUES ({$_SESSION['userid']}, $strength, $quantity);
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    onHand DECIMAL(10, 2) DEFAULT 0,
+    inBank DECIMAL(10, 2) DEFAULT 0,
+    capacity DECIMAL(10, 2) DEFAULT 1000
+);
