@@ -175,3 +175,20 @@ CREATE TABLE personnel (
     ttlarmysize INT DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users(id) -- Assuming there's a users table
 );
+-- Create a database
+CREATE DATABASE progress_db;
+
+-- Use the created database
+USE progress_db;
+
+-- Create a table to store progress data
+CREATE TABLE progress (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    done INT NOT NULL,
+    total INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Example insert statement
+INSERT INTO progress (user_id, done, total) VALUES (1, 50, 200);
