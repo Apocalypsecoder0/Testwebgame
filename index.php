@@ -1,31 +1,43 @@
 <?php
-// update.php
 
-// Include necessary modules
-include 'database.php'; // Database connection
-include 'gameLogic.php'; // Game logic functions
 
-// Function to update game data
-function updateGameData($newData) {
-    // Connect to the database
-    $db = connectDatabase();
+define('MODE', 'LOGIN');
+define('ROOT_PATH', str_replace('\\', '/',dirname(__FILE__)).'/');
+set_include_path(ROOT_PATH);
 
-    // Update game data in the database
-    foreach ($newData as $key => $value) {
-        $query = "UPDATE game_data SET value = :value WHERE key = :key";
-        $stmt = $db->prepare($query);
-        $stmt->execute([':value' => $value, ':key' => $key]);
-    }
+require 'includes/pages/login/AbstractLoginPage.class.php';
+require 'includes/pages/login/ShowErrorPage.class.php';
+require 'includes/common.php';
+/** @var $LNG Language */
 
-    echo "Game data updated successfully!";
+$page 		= HTTP::_GP('page', 'index');
+$mode 		= HTTP::_GP('mode', 'show');
+$page		= str_replace(array('_', '\\', '/', '.', "\0"), '', $page);
+$pageClass	= 'Show'.ucfirst($page).'Page';
+
+$path		= 'includes/pages/login/'.$pageClass.'.class.php';
+
+if(!file_exists($path)) {
+	ShowErrorPage::printError($LNG['page_doesnt_exist']);
 }
 
-// Example new data to update
-$newData = [
-    'level1' => 'new_value',
-    'character1' => 'updated_character'
-];
+// Added Autoload in feature Versions
+require($path);
 
-// Call the function
-updateGameData($newData);
-?>
+$pageObj	= new $pageClass;
+// PHP 5.2 FIX
+// can't use $pageObj::$requireModule
+$pageProps	= get_class_vars(get_class($pageObj));
+
+if(isset($pageProps['requireModule']) && $pageProps['requireModule'] !== 0 && !isModuleAvailable($pageProps['requireModule'])) {
+	ShowErrorPage::printError($LNG['sys_module_inactive']);
+}
+
+if(!is_callable(array($pageObj, $mode))) {	
+	if(!isset($pageProps['defaultController']) || !is_callable(array($pageObj, $pageProps['defaultController']))) {
+		ShowErrorPage::printError($LNG['page_doesnt_exist']);
+	}
+	$mode	= $pageProps['defaultController'];
+}
+
+$pageObj->{$mode}();
