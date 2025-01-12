@@ -250,3 +250,10 @@ SELECT `uname` FROM `users` WHERE uid = 1 LIMIT 1;
 -- Query to send a message (assuming you have a messages table)
 INSERT INTO `messages` (sender_id, receiver_id, subject, message, sent_at) 
 VALUES (1, 2, 'Subject Here', 'Message content here', NOW());
+CREATE TABLE games (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    player_id INT NOT NULL,
+    game_state JSON,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
