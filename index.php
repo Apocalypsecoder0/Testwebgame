@@ -60,7 +60,7 @@ if (!$s->loggedIn || isset($_GET['logout'])) {
                     }
                     ?>
                     <div id="mainDisplay"></div>
-                    <span>Graphics Done by Fraehr</span><br>
+                    <span>Graphics Done by Apocalypsecoder0</span><br>
                     <a href="http://www.icra.org/sitelabel/" target="_blank">
                         <img src="images/icra.gif">
                     </a>
