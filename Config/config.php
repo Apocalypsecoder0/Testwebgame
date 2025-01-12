@@ -4,9 +4,9 @@ session_cache_expire(180);
 session_start();
 
 // General Information
-$subs['{TITLE}'] = "Pegus Galaxy";						# Name of site(header)
+$subs['{TITLE}'] = "Testwengame Galaxy";						# Name of site(header)
 $subs['{SUBTITLE}'] = "The place to get your war on!";	# Second header(subhead)
-$subs['{ADMIN_EMAIL}'] = "mcrodneyau@gmail.com";			# Person to email if something goes wrong
+$subs['{ADMIN_EMAIL}'] = "test@gmail.com";			# Person to email if something goes wrong
 $subs['{HEAD_STUFF}'] = "";								# Stuff to put in <head>(left blank intentionally)
 
 // Database Information
