@@ -120,4 +120,14 @@ CREATE TABLE action_logs (
     action_type ENUM('attack', 'raid', 'spy', 'sab') NOT NULL,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
-);
+);-- Delete a specific message by ID
+DELETE FROM messages WHERE mid = ?;
+
+-- Delete messages from a specific user to the current user
+DELETE FROM messages WHERE fromUID = ? AND toUID = ?;
+
+-- View messages (select all messages)
+SELECT * FROM messages WHERE toUID = ?;  -- Assuming you want messages for the current user
+
+-- Count the number of queries executed (not directly in SQL)
+-- This would typically be handled in application logic, not SQL.
