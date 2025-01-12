@@ -114,3 +114,10 @@ CREATE TABLE IF NOT EXISTS alliances (
 UPDATE users 
 SET power = power + ? 
 WHERE id = ?;
+CREATE TABLE action_logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    action_type ENUM('attack', 'raid', 'spy', 'sab') NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
