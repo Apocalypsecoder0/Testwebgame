@@ -46,12 +46,12 @@ if( isset($_POST['register']) ){
 		
 		if( $sql ){
 		  $to = $email;
-   $from = "admin@war-of-ages.com";
-   $title = "Welcome To War of Ages Wars";
+   $from = "admin@testwebgame.com";
+   $title = "Welcome To testwebgammes";
 $body = "
 Dear ".$username.",
 
-This email confirms your signup at War of Ages
+This email confirms your signup at testwebgame
 below is your login information. if you have
 any questions or comments please email us at
 Admin@war-of-ages.com.
@@ -61,7 +61,7 @@ Password: ".$pass."
 E-Mail:   ".$email."
 
 Thank you,
-WOA Admin Team
+testwebgame Admin Team
 
 ";
    $success = mail($to,$title,$body,
