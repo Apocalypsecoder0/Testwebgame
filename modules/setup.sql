@@ -217,3 +217,30 @@ FROM
     allies 
 WHERE 
     id = :allyid;
+function getRecruiter($link, $mysqli) {
+    $q = "SELECT * FROM `userdata`";
+    $result = $mysqli->query($q);
+
+    while ($row = $result->fetch_assoc()) {
+        $q2 = "SELECT * FROM `userdata` WHERE `link` = '".$mysqli->real_escape_string($row['link'])."'";
+        $v2 = $mysqli->query($q2);
+        $temp = $v2->fetch_assoc();
+
+        $r = "SELECT * FROM `recruit_ips` WHERE `uid` = '".$mysqli->real_escape_string($temp['uid'])."' AND `ip` = '".$_SERVER['REMOTE_ADDR']."'";
+        $r2 = $mysqli->query($r);
+        $count = $r2->num_rows;
+
+        if ($count <= 0) {
+            $q4 = "INSERT INTO `recruit_ips` (`recruitID`, `uid`, `ip`) VALUES (NULL, '".$mysqli->real_escape_string($temp['uid'])."', '".$_SERVER['REMOTE_ADDR']."')";
+            $q3 = "UPDATE `units` SET `untrained` = `untrained` + 4 WHERE `uid` = '".$mysqli->real_escape_string($temp['uid'])."'";
+            $mysqli->query($q3);
+            $mysqli->query($q4);
+            return $temp;
+        } else {
+            return "Error";
+        }
+    }
+}
+
+$mysqli = new mysqli("host", "user", "password", "database");
+$recruiter = getRecruiter($_GET['id'], $mysqli);
