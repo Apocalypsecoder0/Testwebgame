@@ -765,12 +765,13 @@ class Game extends User
     var $actionTurns;      // Number of Action Turns User has to use
     var $inHand;           // Amount of Money On Hand
     var $inBank;           // Amount of Money Banked
+    //var $inGuildbank; //Amount of Money in guild bnank  
     var $nextTurn;         // Amount of Time Till Next Turn
     var $numMessages;      // Number of Messages In User's Inbox
     var $uid;              // UserID
     var $rid;              // Race Identifier
     var $fields;           // Field List
-
+    var $guildfields;           // guildField List
     function nextTurn()
     {
         $turnTime = 30;
@@ -843,6 +844,7 @@ class Game extends User
                   LEFT OUTER JOIN `users` users_1 ON userdata.cid = users_1.uid 
                   LEFT OUTER JOIN `planetsize` ON planets.plnt_size = planetsize.size
                   LEFT OUTER JOIN `technology` ON userdata.uid = technology.uid
+                   LEFT OUTER JOIN researchedblib` ON userdata.uid = researchedlib.uid
                   WHERE users.uid = {$_SESSION['userid']} GROUP BY users.uid";
         $q = $this->query($query);
         return mysql_fetch_object($q);
