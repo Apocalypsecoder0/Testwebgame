@@ -257,3 +257,26 @@ CREATE TABLE games (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+-- 1. Select User
+SELECT * FROM users WHERE userid = :userid;
+
+-- 2. Update User Power
+UPDATE users SET power = :new_power WHERE userid = :userid;
+
+-- 3. Buy Technology
+INSERT INTO user_technologies (userid, tech_id, type) VALUES (:userid, :tech_id, :type);
+
+-- 4. Get Technology Data
+SELECT * FROM technologies WHERE userid = :userid;
+
+-- 5. Get Level Data
+SELECT * FROM levels WHERE ascend = :ascend;
+
+-- 6. Calculate Upgrade Costs
+SELECT (ascend * 5000000 * unitProd) AS upgrade_cost FROM technologies WHERE userid = :userid;
+
+-- 7. Update Technology Levels
+UPDATE technologies SET unitProd = unitProd + :increment WHERE userid = :userid;
+
+-- 8. Count Queries
+SELECT COUNT(*) AS query_count FROM queries WHERE userid = :userid;
