@@ -111,3 +111,6 @@ CREATE TABLE IF NOT EXISTS alliances (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(uid) ON DELETE CASCADE
 );
+UPDATE users 
+SET power = power + ? 
+WHERE id = ?;
