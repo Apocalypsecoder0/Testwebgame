@@ -319,3 +319,23 @@ WHERE userid = ? AND logged_in = 1;
 INSERT INTO query_log (userid, query_count) 
 VALUES (?, ?) 
 ON DUPLICATE KEY UPDATE query_count = query_count + 1;
+
+-- 1. User Information Retrieval
+SELECT userName, cmdrName, cmdrID, race, rank, armySize, onHand 
+FROM users 
+WHERE userID = ?;  -- Replace ? with the actual user ID
+
+-- 2. Officers Retrieval
+SELECT uid, name, race, rank 
+FROM officers 
+WHERE userID = ?;  -- Replace ? with the actual user ID
+
+-- 3. Update User Power
+UPDATE users 
+SET power = ? 
+WHERE userID = ?;  -- Replace ? with the new power value and user ID
+
+-- 4. Count Query
+SELECT COUNT(*) AS officerCount 
+FROM officers 
+WHERE userID = ?;  -- Replace ? with the actual user ID
