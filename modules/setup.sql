@@ -280,3 +280,42 @@ UPDATE technologies SET unitProd = unitProd + :increment WHERE userid = :userid;
 
 -- 8. Count Queries
 SELECT COUNT(*) AS query_count FROM queries WHERE userid = :userid;
+-- 1. Update User Power
+UPDATE users 
+SET power = power + ? 
+WHERE userid = ?;
+
+-- 2. Untrain Units
+UPDATE units 
+SET quantity = quantity - ? 
+WHERE userid = ? AND unit_type = 'attacker';
+
+UPDATE units 
+SET quantity = quantity - ? 
+WHERE userid = ? AND unit_type = 'defender';
+
+UPDATE units 
+SET quantity = quantity - ? 
+WHERE userid = ? AND unit_type = 'cover';
+
+UPDATE units 
+SET quantity = quantity - ? 
+WHERE userid = ? AND unit_type = 'anti';
+
+UPDATE units 
+SET quantity = quantity - ? 
+WHERE userid = ? AND unit_type = 'miner';
+
+-- 3. Train Units
+INSERT INTO units (userid, unit_type, quantity) 
+VALUES (?, 'attacker', ?), (?, 'defender', ?), (?, 'cover', ?), (?, 'anti', ?), (?, 'miner', ?)
+ON DUPLICATE KEY UPDATE quantity = quantity + VALUES(quantity);
+
+-- 4. Check User Login Status
+SELECT * FROM users 
+WHERE userid = ? AND logged_in = 1;
+
+-- 5. Count Queries
+INSERT INTO query_log (userid, query_count) 
+VALUES (?, ?) 
+ON DUPLICATE KEY UPDATE query_count = query_count + 1;
