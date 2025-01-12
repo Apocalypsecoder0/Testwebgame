@@ -244,3 +244,9 @@ function getRecruiter($link, $mysqli) {
 
 $mysqli = new mysqli("host", "user", "password", "database");
 $recruiter = getRecruiter($_GET['id'], $mysqli);
+-- Query to get the username of a user by their ID
+SELECT `uname` FROM `users` WHERE uid = 1 LIMIT 1;
+
+-- Query to send a message (assuming you have a messages table)
+INSERT INTO `messages` (sender_id, receiver_id, subject, message, sent_at) 
+VALUES (1, 2, 'Subject Here', 'Message content here', NOW());
