@@ -8,8 +8,8 @@
 <body>
 Frequently Asked Question<br />
 <br />
-What Does &quot;Lantea&quot; mean or stand for?<br /> 
-	<font>-Lantea is the last planet is which the atlantians occupied in the series. It's where Atlantis is Located.</font>
+What Does &quot;test&quot; mean or stand for?<br /> 
+	<font>- is the last planet is which the atlantians occupied in the series. It's where Atlantis is Located.</font>
 <br />
 What Does TBC Stand For?<br />
   <font>-It Means that &quot;To Be Coded&quot; and ussually is there but i have yet to fully code it in so it isnt active.</font>
